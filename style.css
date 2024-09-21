@@ -117,9 +117,9 @@ h3 {
 .navbar button {
   background: unset;
 }
-.navbar:has(menu-modal[style="display: block;"]) div{
+
+.navbar:has(.menu-modal[style="display: block;"]) .hamburger{
  display: none;
- background: pink !important;
 }
 .hamburger {
     font-size: 30px;
