@@ -97,22 +97,13 @@ document.getElementById('calculateGPA').addEventListener('click', function() {
 
 
 //hamburger Menu
-const hamburger = document.getElementById('hamburger')
+const hamburger_btn = document.getElementById('hamburger')
 const menuModal = document.getElementById('menuModal')
-const closeMenu = document.getElementById('closeMenu')
 
-hamburger.addEventListener('click', function() {
-  menuModal.style.display = 'block'
- // hamburger.style.display = 'none'
-// closeMenu.style.display = 'block'
+hamburger_btn.addEventListener('click', function() {
+  menuModal.classList.toggle("display-none")
 });
 
-closeMenu.addEventListener('click', function() {
-  menuModal.style.display = 'none'
-  //closeMenu.style.display = 'none'
-//  hamburger.style.display = 'block'
-  
-});
 
 window.addEventListener('click', function(event) {
   if (event.target === menuModal) {
