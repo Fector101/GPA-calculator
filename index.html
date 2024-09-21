@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>School Stats</title>
-
-     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- <link href="css/default.css" -->
-
- <script src="script.js" defer></script>
-   
+    <title>GPA Calculator</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <h1>GPA Calculator</h1>
+    <form id="courseForm">
+        <input type="text" id="courseName" placeholder="Course Name" required>
+        
+        <select id="grade" required>
+            <option value="A" selected>A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+        </select>
+        
+        <input type="number" id="units" placeholder="Credit Units" required>
+        <input type="number" id="score" placeholder="Score" required>
+        <button type="button" id="addCourse">Add Course</button>
+    </form>
 
- <p>test</p>
+    <h3>Courses Added:</h3>
+    <ul id="courseList"></ul>
 
+    <button id="calculateGPA">Calculate GPA</button>
+    <p id="gpaResult"></p>
 </body>
-
 </html>
-
