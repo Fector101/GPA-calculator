@@ -17,7 +17,7 @@ body {
     padding: 50px;
 }
 .display-none{
-    display-none: none;
+    display: none;
 }
 /*GPA Container*/
 form, .gpa-container {
