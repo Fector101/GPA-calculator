@@ -94,3 +94,28 @@ document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, true)
     document.getElementById('gpaResult').innerText = result
 });
+
+
+//hamburger Menu
+const hamburger = document.getElementById('hamburger')
+const menuModal = document.getElementById('menuModal')
+const closeMenu = document.getElementById('closeMenu')
+
+hamburger.addEventListener('click', function() {
+  menuModal.style.display = 'block'
+ // hamburger.style.display = 'none'
+// closeMenu.style.display = 'block'
+});
+
+closeMenu.addEventListener('click', function() {
+  menuModal.style.display = 'none'
+  //closeMenu.style.display = 'none'
+//  hamburger.style.display = 'block'
+  
+});
+
+window.addEventListener('click', function(event) {
+  if (event.target === menuModal) {
+    menuModal.style.display = 'none'
+  }
+})
