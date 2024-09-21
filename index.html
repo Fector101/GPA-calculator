@@ -12,16 +12,18 @@
     <form id="courseForm">
         <input type="text" id="courseName" placeholder="Course Name" required>
         
-        <select id="grade" required>
-            <option value="A" selected>A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="E">E</option>
-            <option value="F">F</option>
-        </select>
-        
-        <input type="number" id="units" placeholder="Credit Units" required>
+  <div class="form-row">
+    <select id="grade" required>
+      <option value="A" selected>A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="E">E</option>
+      <option value="F">F</option>
+    </select>
+
+    <input type="number" id="units" placeholder="Credit Units" required>
+  </div>
         <input type="number" id="score" placeholder="Score" required>
         <button type="button" id="addCourse">Add Course</button>
     </form>
