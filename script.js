@@ -106,7 +106,8 @@ hamburger_btn.addEventListener('click', function() {
 
 
 window.addEventListener('click', function(event) {
-  if (event.target === menuModal) {
-    menuModal.style.display = 'none'
+
+  if (!event.target.closest('.navbar')) {
+    menuModal.classList.add("display-none")
   }
 })
