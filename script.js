@@ -47,8 +47,8 @@ function gpa_calc(data,use_score=false) {
   
   //console.log("Your Total Grade Point is",TGP)
   //console.log("Your Total Credit Unit is",TCU)
-  console.log("Your GP is",GPA)
-  return GPA
+  console.log("Your GP is",GPA")
+  return "Your GP is "+GPA
   
   //.forEach(each=>console.log(each))
   
@@ -63,5 +63,4 @@ let data={
     "COS 111":{grade:"A",units:3,score:85},
     "CSC 112":{grade:"A",units:2,score:84}
   }
-//data=
-gpa_calc(data,1)
+document.querySelector("p").innerText=gpa_calc(data,1)
