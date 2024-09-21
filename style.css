@@ -76,3 +76,21 @@ h3 {
     margin-top: 20px;
     font-size: 18px;
 }
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+   flex: 1;
+    margin: 0;
+}
+
+/* Sending some rows to one line for smaller screens*/
+@media screen and (max-width: 568px) {
+    .form-row {
+      flex-direction: row;
+      gap:10px;
+    }
+   .form-row input,.form-row select {
+      margin: 0;
+    }
+}
