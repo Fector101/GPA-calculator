@@ -53,7 +53,7 @@ function gpa_calc(data,use_score=false) {
   //.forEach(each=>console.log(each))
   
 }
-let data={
+let test={
     "gst 112":{grade:"A",units:2,score:95},
     "STA 111":{grade:"B",units:3,score:68},
     "PHY 117":{grade:"A",units:2,score:83},
@@ -63,4 +63,34 @@ let data={
     "COS 111":{grade:"A",units:3,score:85},
     "CSC 112":{grade:"A",units:2,score:84}
   }
-document.querySelector("p").innerText=gpa_calc(data,1)
+let data={}
+//document.querySelector("p").innerText=gpa_calc(data,1)
+// Add course
+document.getElementById('addCourse').addEventListener('click', function() {
+    const courseName = document.getElementById('courseName').value;
+    const grade = document.getElementById('grade').value
+    const units = parseInt(document.getElementById('units').value)
+    const score = parseInt(document.getElementById('score').value)
+
+    if (courseName && grade && units && score) {
+        // Update courses object
+        data[courseName] = { grade, units, score }
+
+        // Update course list
+        const courseList = document.getElementById('courseList')
+        const listItem = document.createElement('li')
+        listItem.textContent = `${courseName} - Grade: ${grade}, Units: ${units}, Score: ${score}`
+        courseList.appendChild(listItem)
+
+        // Reset inputs
+        document.getElementById('courseForm').reset()
+    } else {
+        alert("Please fill out all fields.")
+    }
+});
+
+
+document.getElementById('calculateGPA').addEventListener('click', function() {
+    const result = gpa_calc(data, true)
+    document.getElementById('gpaResult').innerText = result
+});
