@@ -57,10 +57,12 @@ button:hover {
 }
 
 /* Course list*/
-ul {
+ul#courseList {
     list-style-type: none;
     padding: 0;
+    margin: 16px; 
 }
+
 
 li {
     background-color: #e9ecef;
