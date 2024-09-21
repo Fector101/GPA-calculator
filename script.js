@@ -1,3 +1,4 @@
+document.querySelector("body").style.background="red"
 const grade_points={
   A:5,B:4,
   C:3,D:2,
