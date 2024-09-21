@@ -114,13 +114,15 @@ h3 {
     z-index: 100;
 }
 
+.navbar button {
+  background: unset;
+}
 .navbar:has(menu-modal[style="display: block;"]) div{
  display: none;
  background: pink !important;
 }
 .hamburger {
     font-size: 30px;
-    background: none;
     border: none;
     color: #333;
     cursor: pointer;
@@ -163,7 +165,6 @@ h3 {
 
 .close-menu {
     font-size: 30px;
-    background: none;
     border: none;
     color: white;
     position: absolute;
