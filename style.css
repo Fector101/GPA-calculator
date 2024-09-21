@@ -133,7 +133,7 @@ h3 {
     z-index: 101;
 }
 .menu-modal {
-    display: none;
+    
     position: fixed;
     top: 0;
     right: 0;
