@@ -66,13 +66,15 @@ let test={
 let data={}
 //document.querySelector("p").innerText=gpa_calc(data,1)
 // Add course
+const score_elem = document.getElementById('score')
+const grade_elem = document.getElementById('grade')
 document.getElementById('addCourse').addEventListener('click', function() {
-    const courseName = document.getElementById('courseName').value;
-    const grade = document.getElementById('grade').value
+    const courseName = document.getElementById('courseName').value
+    const grade = grade_elem.value
     const units = parseInt(document.getElementById('units').value)
-    const score = parseInt(document.getElementById('score').value)
-
-    if (courseName && grade && units && score) {
+    const score = parseInt(score_elem.value)
+  
+    if (courseName && grade && units &&  score!= NaN) {
         // Update courses object
         data[courseName] = { grade, units, score }
 
@@ -89,6 +91,17 @@ document.getElementById('addCourse').addEventListener('click', function() {
     }
 });
 
+score_elem.addEventListener("input",function () {
+  const score=parseFloat(this.value)
+  if( score!= NaN){
+      for (let lower_point in grade_upper_limits){
+        if(score<=+lower_point){
+          const gotten_grade=grade_upper_limits[lower_point]
+          document.querySelector(`select#grade option[value="${gotten_grade}"]`). selected=true 
+          break 
+        }}
+  }
+})1
 
 document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, true)
