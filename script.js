@@ -38,6 +38,9 @@ function gpa_calc(data,use_score=false) {
           
           TGP += grade_points[gotten_grade] * units
           break
+        } else if (score >100) {
+          TGP += grade_points["A"] * units
+          break
         }
       }
     }
