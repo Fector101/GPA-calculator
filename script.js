@@ -99,7 +99,11 @@ score_elem.addEventListener("input",function () {
           const gotten_grade=grade_upper_limits[lower_point]
           document.querySelector(`select#grade option[value="${gotten_grade}"]`). selected=true 
           break 
-        }}
+        } else if (score >100) {
+          document.querySelector(`select#grade option[value="A"]`).selected = true
+          break
+        }
+      }
   }
 })
 
