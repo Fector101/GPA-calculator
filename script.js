@@ -74,7 +74,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
     const units = parseInt(document.getElementById('units').value)
     const score = parseInt(score_elem.value)
   
-    if (courseName && grade && units &&  score!= NaN) {
+    if (courseName && grade && units && !isNaN(score)) {
         // Update courses object
         data[courseName] = { grade, units, score }
 
@@ -93,7 +93,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
 
 score_elem.addEventListener("input",function () {
   const score=parseFloat(this.value)
-  if( score!= NaN){
+  if(!isNaN(score)){
       for (let lower_point in grade_upper_limits){
         if(score<=+lower_point){
           const gotten_grade=grade_upper_limits[lower_point]
