@@ -101,7 +101,7 @@ score_elem.addEventListener("input",function () {
           break 
         }}
   }
-})1
+})
 
 document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, true)
