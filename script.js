@@ -102,7 +102,8 @@ document.getElementById('addCourse').addEventListener('click', function() {
  course_toedit_ele.classList.remove("editing")
         }else{
           const course_id=courseName+"fucduhfrv"+id
-        data[course_id] = { grade, units, score }
+       // data[course_id] = { grade, units, score }
+ data[course_id] = { grade, units}
 
         // Update course list
         const courseList = document.getElementById('courseList')
