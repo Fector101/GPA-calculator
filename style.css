@@ -78,6 +78,10 @@ li {
     justify-content: space-between;
     align-items: center;
 }
+
+ul li:nth-child(2n) {
+  background-color: rgb(236, 240, 245);
+}
 li .course {
   display: flex;
   gap:10px;
