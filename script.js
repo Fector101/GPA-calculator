@@ -53,7 +53,7 @@ function gpa_calc(data,use_score=false) {
   //console.log("Your Total Grade Point is",TGP)
   //console.log("Your Total Credit Unit is",TCU)
   console.log("Your GP is",GPA)
-  return "Your GP is "+GPA
+  return "Your GP is "+GPA.toFixed(2)
   
   //.forEach(each=>console.log(each))
   
