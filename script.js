@@ -27,7 +27,7 @@ function gpa_calc(data,use_score=false) {
   let TGP=0
   let TCU=0
   const courses=Object.keys(data)
-  if (courses.length===0) return "Enter Courses"
+  if (courses.length===0) return "You need to Enter a Course."
   for (let course in data){
     const {grade,units,score}=data[course]
     if(!use_score){
