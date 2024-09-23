@@ -29,11 +29,12 @@ function gpa_calc(data,use_score=false) {
   const courses=Object.keys(data)
   if (courses.length===0) return "You need to Enter a Course."
   for (let course in data){
-    const {grade,units,score}=data[course]
+    //const {grade,units,score}=data[course]
+ const {grade,units}=data[course]
     if(!use_score){
       TGP += grade_points[grade] * units
     }else{
-      for (let lower_point in grade_upper_limits){
+      `for (let lower_point in grade_upper_limits){
        // console.log(lower_point)
         if(score<=+lower_point){
           const gotten_grade=grade_upper_limits[lower_point]
@@ -43,7 +44,7 @@ function gpa_calc(data,use_score=false) {
         } else if (score >100) {
           TGP += grade_points["A"] * units
           break
-        }
+        }`
       }
     }
     TCU += units
@@ -71,7 +72,7 @@ let test={
 let data={}
 //document.querySelector("p").innerText=gpa_calc(data,1)
 // Add course
-const score_elem = document.getElementById('score')
+//const score_elem = document.getElementById('score')
 const grade_elem = document.getElementById('grade')
 document.getElementById('addCourse').addEventListener('click', function() {
   
@@ -83,9 +84,9 @@ document.getElementById('addCourse').addEventListener('click', function() {
     const courseName = document.getElementById('courseName').value
     const grade = grade_elem.value
     const units = parseInt(document.getElementById('units').value)
-    const score = parseInt(score_elem.value)
+    //const score = parseInt(score_elem.value)
   
-    if (courseName && grade && units && !isNaN(score)) {
+    if (courseName && grade && units) {
         // Update courses object
       
           const course_toedit_ele=document.querySelector("li.editing")
@@ -96,8 +97,9 @@ document.getElementById('addCourse').addEventListener('click', function() {
           course_toedit_ele.querySelector("ul p.grade").innerText=`Grade: ${grade}`
           course_toedit_ele.querySelector("ul p.unit").innerText=`Units: ${units}`
           course_toedit_ele.querySelector("ul p.score").innerText=`Score: ${score}`
-          data[course_id] = { grade, units, score }
-          course_toedit_ele.classList.remove("editing")
+         // data[course_id] = { grade, units, score }
+         data[course_id] = { grade, units }
+ course_toedit_ele.classList.remove("editing")
         }else{
           const course_id=courseName+"fucduhfrv"+id
         data[course_id] = { grade, units, score }
@@ -114,14 +116,14 @@ document.getElementById('addCourse').addEventListener('click', function() {
           <ul>
             <p class="grade"> Grade: ${grade}</p>
             <p class="unit"> Units: ${units}</p>
-            <p class="score">Score: ${score}</p>
+       </p>
           </ul>
         </div>
             <button onclick="editCourse(this)" class="edit">Edit</button>
             <button onclick="deleteCourse(this)">Delete</button>
        
         `
-        
+             //<p class="score">Score: ${score}
         courseList.appendChild(listItem)
        }
       
@@ -131,7 +133,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
         alert("Please fill out all fields.")
     }
 });
-
+`
 score_elem.addEventListener("input",function () {
   const score=parseFloat(this.value)
   if(!isNaN(score)){
@@ -147,7 +149,7 @@ score_elem.addEventListener("input",function () {
       }
   }
 })
-
+`
 document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, 0)
     document.getElementById('gpaResult').innerText = result
@@ -177,7 +179,7 @@ const par=ele.closest('.course-build')
   document.getElementById('courseName').value = course_name
   document.getElementById('grade').value = course.grade
   document.getElementById('units').value = course.units
-  document.getElementById('score').value = course.score
+ // document.getElementById('score').value = course.score
   document.getElementById('addCourse').innerText = 'Update Course'
   course_form_ele.classList.add("edit")
   par.classList.add("editing")
