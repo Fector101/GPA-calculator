@@ -96,7 +96,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
           
           course_toedit_ele.querySelector("ul p.grade").innerText=`Grade: ${grade}`
           course_toedit_ele.querySelector("ul p.unit").innerText=`Units: ${units}`
-          course_toedit_ele.querySelector("ul p.score").innerText=`Score: ${score}`
+          //course_toedit_ele.querySelector("ul p.score").innerText=`Score: ${score}`
          // data[course_id] = { grade, units, score }
          data[course_id] = { grade, units }
  course_toedit_ele.classList.remove("editing")
