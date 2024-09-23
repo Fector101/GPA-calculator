@@ -149,7 +149,7 @@ score_elem.addEventListener("input",function () {
 })
 
 document.getElementById('calculateGPA').addEventListener('click', function() {
-    const result = gpa_calc(data, true)
+    const result = gpa_calc(data, 0)
     document.getElementById('gpaResult').innerText = result
 });
 
