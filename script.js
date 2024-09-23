@@ -33,20 +33,9 @@ function gpa_calc(data,use_score=false) {
  const {grade,units}=data[course]
     if(!use_score){
       TGP += grade_points[grade] * units
-    }else{
-      `for (let lower_point in grade_upper_limits){
-       // console.log(lower_point)
-        if(score<=+lower_point){
-          const gotten_grade=grade_upper_limits[lower_point]
-          
-          TGP += grade_points[gotten_grade] * units
-          break
-        } else if (score >100) {
-          TGP += grade_points["A"] * units
-          break
-        }`
-      }
-    }
+    }  
+    
+    
     TCU += units
   }
   const GPA = TGP/TCU
@@ -134,23 +123,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
         alert("Please fill out all fields.")
     }
 });
-`
-score_elem.addEventListener("input",function () {
-  const score=parseFloat(this.value)
-  if(!isNaN(score)){
-      for (let lower_point in grade_upper_limits){
-        if(score<=+lower_point){
-          const gotten_grade=grade_upper_limits[lower_point]
-          document.querySelector(`select#grade option[value="${gotten_grade}"]`). selected=true 
-          break 
-        } else if (score >100) {
-          document.querySelector(`select#grade option[value="A"]`).selected = true
-          break
-        }
-      }
-  }
-})
-`
+
 document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, 0)
     document.getElementById('gpaResult').innerText = result
@@ -192,4 +165,3 @@ function deleteCourse(ele) {
   delete data[course_name]
   par.remove()
 }
-
