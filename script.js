@@ -1,3 +1,5 @@
+id=0
+const course_form_ele=document.querySelector("form#courseForm")
 const grade_points={
   A:5,B:4,
   C:3,D:2,
@@ -72,6 +74,12 @@ let data={}
 const score_elem = document.getElementById('score')
 const grade_elem = document.getElementById('grade')
 document.getElementById('addCourse').addEventListener('click', function() {
+  
+  if (course_form_ele.classList.contains("edit")) {
+    //might do other things in here
+  this.innerText="Add Course"
+  course_form_ele.classList.remove("edit")
+  }
     const courseName = document.getElementById('courseName').value
     const grade = grade_elem.value
     const units = parseInt(document.getElementById('units').value)
@@ -79,16 +87,46 @@ document.getElementById('addCourse').addEventListener('click', function() {
   
     if (courseName && grade && units && !isNaN(score)) {
         // Update courses object
-        data[courseName] = { grade, units, score }
+      
+          const course_toedit_ele=document.querySelector("li.editing")
+        if(course_toedit_ele){
+          const course_id =course_toedit_ele.id
+          course_toedit_ele.querySelector("p").innerText=courseName
+          
+          course_toedit_ele.querySelector("ul p.grade").innerText=`Grade: ${grade}`
+          course_toedit_ele.querySelector("ul p.unit").innerText=`Units: ${units}`
+          course_toedit_ele.querySelector("ul p.score").innerText=`Score: ${score}`
+          data[course_id] = { grade, units, score }
+          course_toedit_ele.classList.remove("editing")
+        }else{
+          const course_id=courseName+"fucduhfrv"+id
+        data[course_id] = { grade, units, score }
 
         // Update course list
         const courseList = document.getElementById('courseList')
         const listItem = document.createElement('li')
-        listItem.textContent = `${courseName} - Grade: ${grade}, Units: ${units}, Score: ${score}`
+        listItem.id=course_id
+        listItem.classList.add("course-build")
+        listItem.innerHTML = `
+            
+        <div class="course">
+          <p>${courseName}</p>
+          <ul>
+            <p class="grade"> Grade: ${grade}</p>
+            <p class="unit"> Units: ${units}</p>
+            <p class="score">Score: ${score}</p>
+          </ul>
+        </div>
+            <button onclick="editCourse(this)" class="edit">Edit</button>
+            <button onclick="deleteCourse(this)">Delete</button>
+       
+        `
+        
         courseList.appendChild(listItem)
-
-        // Reset inputs
+       }
+      
         document.getElementById('courseForm').reset()
+        id +=1
     } else {
         alert("Please fill out all fields.")
     }
@@ -131,3 +169,24 @@ window.addEventListener('click', function(event) {
     menuModal.classList.add("display-none")
   }
 })
+
+function editCourse(ele){
+const par=ele.closest('.course-build')
+ const course_name =par.querySelector(".course p").innerText
+ const course=data[par.id]
+  document.getElementById('courseName').value = course_name
+  document.getElementById('grade').value = course.grade
+  document.getElementById('units').value = course.units
+  document.getElementById('score').value = course.score
+  document.getElementById('addCourse').innerText = 'Update Course'
+  course_form_ele.classList.add("edit")
+  par.classList.add("editing")
+}
+
+function deleteCourse(ele) { 
+  const par=ele.closest('.course-build')
+  const course_name =par.id
+  delete data[course_name]
+  par.remove()
+}
+
