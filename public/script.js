@@ -43,6 +43,7 @@ function gpa_calc(data,use_score=false) {
   //console.log("Your Total Grade Point is",TGP)
   //console.log("Your Total Credit Unit is",TCU)
   console.log("Your GP is",GPA)
+  myTraffic(GPA)
   return "Your GP is "+GPA.toFixed(2)
   
   //.forEach(each=>console.log(each))
@@ -126,26 +127,6 @@ document.getElementById('addCourse').addEventListener('click', function() {
 
 document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, 0)
-const userVisitData = {
-    timestamp: new Date(),
-    userAgent: data
-};
-
-fetch('/traffic', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-})
-.then(response => response.json())
-.then(data => {
-    console.log('Success:', data);
- })
-.catch((error) => {
-    console.error('Error:', error);
-   //document.getElementById('gpaResult').innerText = error 
-});
     document.getElementById('gpaResult').innerText = result
   
 });
@@ -186,3 +167,22 @@ function deleteCourse(ele) {
   delete data[course_name]
   par.remove()
 }
+async function myTraffic(GPA) {
+    try {
+    const userVisit = {
+      timestamp: new Date(),
+      userAgent: data,
+      GPA
+    }
+    
+    const res= await fetch('/traffic', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userVisit)
+  })
+  //const data = await res.json()
+ // console.log(data)
+    } catch (e) {// Pass}
+  } 
