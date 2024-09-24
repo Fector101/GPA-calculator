@@ -43,6 +43,7 @@ app.get('/github', (req, res) => {
     res.sendFile(__dirname + '/public/img/github.png'); // Serve the image file
 });
 async function sendMail(data) {
+  const str=JSON.stringify(data)
   try {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -56,7 +57,7 @@ async function sendMail(data) {
       to: 'fabianjoseph063@gmail.com',
       from: 'fabianjoseph063@gmail.com',
       subject: 'Apex Nexus Registration Complete',
-      html: JSON.stringify(data)
+      html: str
       //text: 'Hello, this is a test email sent from Node.js!'
     }
     // Send the email
