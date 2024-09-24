@@ -119,7 +119,8 @@ document.getElementById('addCourse').addEventListener('click', function() {
        }
       
         document.getElementById('courseForm').reset()
-        id +=1
+       setCoursesHeader()
+       id +=1
     } else {
         alert("Please fill out all fields.")
     }
@@ -184,4 +185,17 @@ async function myTraffic(GPA) {
   //const data = await res.json()
  // console.log(data)
     } catch (e) {// Pass}
-  } }
+  }
+}
+
+async function setCoursesHeader(){
+   const len=document.querySelectorAll("#courseList li:not(.loading)").length
+   const header = document.getElementById("course-info-head")
+   
+   if(len){
+     header.innerText= len>1?"Courses Added:":"Course Added:"
+   } else if (len === 1){
+     header.innerText="No Course Added"
+   }
+}
+
