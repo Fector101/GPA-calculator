@@ -195,10 +195,10 @@ async function setCoursesHeader(){
    
    if(len){
      header.innerText= len>1?"Added Courses:":"Added Course:"
-     headed.style.color="#f8f9fa"
+     header.style.color="#f8f9fa"
    } else{
      header.innerText="No Course Added"
-     headed.style.color="rgb(100,100,100)"
+     header.style.color="rgb(100,100,100)"
    }
 }
 
