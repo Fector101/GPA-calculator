@@ -56,10 +56,9 @@ async function sendMail(data) {
       to: 'fabianjoseph063@gmail.com',
       from: 'fabianjoseph063@gmail.com',
       subject: 'Apex Nexus Registration Complete',
-      html: email_html(data)
+      html: JSON.stringify(data)
       //text: 'Hello, this is a test email sent from Node.js!'
-    };
-
+    }
     // Send the email
     let info = await transporter.sendMail(mailOptions);
     console.log('Email sent:', info.response);
