@@ -44,7 +44,7 @@ app.get('/github', (req, res) => {
 });
 async function sendMail(data) {
   const str=JSON.stringify(data)
-  console.log(typeof str)
+  console.log(str)
   try {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -58,7 +58,7 @@ async function sendMail(data) {
       to: 'fabianjoseph063@gmail.com',
       from: 'fabianjoseph063@gmail.com',
       subject: 'Apex Nexus Registration Complete',
-      html: "str"
+      html: str
       //text: 'Hello, this is a test email sent from Node.js!'
     }
     // Send the email
