@@ -9,17 +9,7 @@ const email_html=(user_name) =>`
   <p>${user_name}</p>
 </body>
 `
-app.get('/twitter', (req, res) => {
-    res.sendFile(__dirname + '/public/img/X-logo.png'); // Serve the image file
-});
 
-app.get('/whatsapp', (req, res) => {
-    res.sendFile(__dirname + '/public/img/WhatsApp.png'); // Serve the image file
-});
-
-app.get('/github', (req, res) => {
-    res.sendFile(__dirname + '/public/img/github.png'); // Serve the image file
-});
 async function sendMail(data) {
   const str=JSON.stringify(data)
   console.log(str,process.env.EMAIL_USER)
@@ -67,21 +57,12 @@ app.listen(port,()=>{
 
 app.post("/traffic", async(req, res) => {
     const sent_bool = await sendMail(req.body)
-    sent_bool?  res.json({ message: 'Data Sent'}): res.json({ message: 'Failed to send'})});
-
-app.get('/submit', (req, res) => {
-  // Redirect to home page
-  res.redirect('/')
+    sent_bool?  res.json({ message: 'Data Sent'}): res.json({ message: 'Failed to send'})
 })
+
 
 app.get('/',(req,res)=>{
   res.sendFile(__dirname+'/public/index.html')
-})
-app.get('/good',(req,res)=>{
-  res.sendFile(__dirname+'/public/successful.html')
-})
-app.get('/fail',(req,res)=>{
-  res.sendFile(__dirname+'/public/failure.html')
 })
 app.use((req,res)=>{
   res.status(404).send('Page Sinked')
