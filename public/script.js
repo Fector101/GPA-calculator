@@ -167,6 +167,7 @@ function deleteCourse(ele) {
   const course_name =par.id
   delete data[course_name]
   par.remove()
+  setCoursesHeader()
 }
 async function myTraffic(GPA) {
     try {
