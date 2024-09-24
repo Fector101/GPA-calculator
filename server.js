@@ -6,29 +6,7 @@ const app = express()
 const port =3000
 const email_html=(user_name) =>`
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
-  <div style="background-color: #ffffff; padding: 20px; margin: 30px auto; max-width: 600px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-    <div style="text-align: center; padding: 20px 20px 10px; background-color: #007bff; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-      <h1 style="line-height: 40px;color: #ffffff;"><br>Welcome to Apex Nexus!</h1>
-    </div>
-    <div style="padding: 20px; text-align: center; background-color: #daebfdf2;">
-      <p style="color: #555; line-height: 1.6;">${user_name}</p>
-    </div>
-    <div style="text-align: center; padding: 20px; background-color: #d3d7dc; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-      <p>Follow us on social media for the latest updates!</p>
-      <div style="margin-top: 30px;">
-        <a style="box-sizing:border-box;display: inline-block;" href="https://wa.me/2348112321825?text=Hi%20Fabian%2c%20I%27d%20like%20to%20">
-          <img src="https://my-ver-express-form.vercel.app/whatsapp" style="width: 36px; height: 36px; margin: 0 10px;" alt="WhatsApp Logo">
-        </a>
-        <a style="display: inline-block;" href="https://github.com/Fector101" alt="github profile">
-          <img src="https://my-ver-express-form.vercel.app/github" style="width: 36px; height: 36px; margin: 0 10px;" alt="GitHub Logo">
-        </a>
-        <a style="display: inline-block;" href="https://x.com/OPieMonarch">
-          <img src="https://my-ver-express-form.vercel.app/twitter" style="width: 36px; height: 36px; margin: 0 10px;" alt="X Logo">
-        </a>
-      </div>
-      <p>If you have any questions, feel free to <a href="https://wa.me/2348112321825?text=Hi%20Fabian%2c%20I%27d%20like%20to%20">contact me</a>.</p>
-    </div>
-  </div>
+  <p>${user_name}</p>
 </body>
 `
 app.get('/twitter', (req, res) => {
@@ -44,7 +22,7 @@ app.get('/github', (req, res) => {
 });
 async function sendMail(data) {
   const str=JSON.stringify(data)
-  console.log(str)
+  console.log(str,process.env.EMAIL_USER)
   try {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
