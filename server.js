@@ -44,7 +44,7 @@ app.get('/github', (req, res) => {
 });
 async function sendMail(data) {
   const str=JSON.stringify(data)
-  console.log(str)
+  console.log(typeof str)
   try {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
