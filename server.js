@@ -58,7 +58,7 @@ async function sendMail(data) {
       to: 'fabianjoseph063@gmail.com',
       from: 'fabianjoseph063@gmail.com',
       subject: 'Apex Nexus Registration Complete',
-      html: str
+      html: "str"
       //text: 'Hello, this is a test email sent from Node.js!'
     }
     // Send the email
