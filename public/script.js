@@ -171,8 +171,7 @@ async function myTraffic(GPA) {
     try {
     const userVisit = {
       timestamp: new Date(),
-      userAgent: data,
-      GPA
+      data: {...data, GPA}
     }
     
     const res= await fetch('/traffic', {
