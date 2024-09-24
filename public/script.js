@@ -193,9 +193,11 @@ async function setCoursesHeader(){
    const header = document.getElementById("course-info-head")
    
    if(len){
-     header.innerText= len>1?"Courses Added:":"Course Added:"
+     header.innerText= len>1?"Added Courses:":"Added Course:"
+     headed.style.color="#f8f9fa"
    } else if (len === 1){
      header.innerText="No Course Added"
+     headed.style.color="rgb(100,100,100)"
    }
 }
 
