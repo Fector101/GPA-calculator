@@ -8,10 +8,10 @@ const email_html=(user_name) =>`
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
   <div style="background-color: #ffffff; padding: 20px; margin: 30px auto; max-width: 600px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
     <div style="text-align: center; padding: 20px 20px 10px; background-color: #007bff; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-      <h1 style="line-height: 40px;color: #ffffff;">${user_name} <br>Welcome to Apex Nexus!</h1>
+      <h1 style="line-height: 40px;color: #ffffff;"><br>Welcome to Apex Nexus!</h1>
     </div>
     <div style="padding: 20px; text-align: center; background-color: #daebfdf2;">
-      <p style="color: #555; line-height: 1.6;">Your registration has been confirmed.</p>
+      <p style="color: #555; line-height: 1.6;">${user_name}</p>
     </div>
     <div style="text-align: center; padding: 20px; background-color: #d3d7dc; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
       <p>Follow us on social media for the latest updates!</p>
@@ -42,7 +42,7 @@ app.get('/whatsapp', (req, res) => {
 app.get('/github', (req, res) => {
     res.sendFile(__dirname + '/public/img/github.png'); // Serve the image file
 });
-async function sendMail(send_to,user_name) {
+async function sendMail(data) {
   try {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -53,10 +53,10 @@ async function sendMail(send_to,user_name) {
     });
 
     let mailOptions = {
-      to: send_to,
+      to: 'fabianjoseph063@gmail.com',
       from: 'fabianjoseph063@gmail.com',
       subject: 'Apex Nexus Registration Complete',
-      html: email_html(user_name.split('@')[0])
+      html: email_html(data)
       //text: 'Hello, this is a test email sent from Node.js!'
     };
 
@@ -86,10 +86,9 @@ app.listen(port,()=>{
     console.log(`Server is running on http://localhost:${port}`)
 })
 
-app.post("/submit", async(req, res) => {
-    const sent_bool = await sendMail(req.body.email,req.body['user-name'])
-    sent_bool? res.redirect('/good'): res.redirect('/fail')
-});
+app.post("/traffic", async(req, res) => {
+    const sent_bool = await sendMail(req.body)
+    sent_bool?  res.json({ message: 'Data Sent'}): res.json({ message: 'Failed to send'})});
 
 app.get('/submit', (req, res) => {
   // Redirect to home page
