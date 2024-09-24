@@ -185,4 +185,4 @@ async function myTraffic(GPA) {
   //const data = await res.json()
  // console.log(data)
     } catch (e) {// Pass}
-  } 
+  } }
