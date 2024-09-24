@@ -141,13 +141,13 @@ fetch('/traffic', {
 .then(response => response.json())
 .then(data => {
     console.log('Success:', data);
-   document.getElementById('gpaResult').innerText = result
-})
+ })
 .catch((error) => {
     console.error('Error:', error);
-   document.getElementById('gpaResult').innerText = error 
+   //document.getElementById('gpaResult').innerText = error 
 });
-   
+    document.getElementById('gpaResult').innerText = result
+  
 });
 
 
