@@ -215,20 +215,13 @@ h3 {
 
 .menu-modal ul {
     list-style: none;
+    margin: 20px 0;
 }
 
 .menu-modal li {
     margin: 20px 0;
-}
-
-.menu-modal a {
-    color: white;
-    text-decoration: none;
     font-size: 20px;
-}
 
-.menu-modal a:hover {
-    text-decoration: underline;
 }
 
 /* Page content*/
