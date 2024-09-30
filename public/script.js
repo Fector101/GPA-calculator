@@ -176,11 +176,12 @@ const new_data = Object.entries(data)
   .map(([course, value]) =>
     `(${course.replace("fucduhfrv", " -")}, Grade: ${value.grade}, Units: ${value.units})`
   )
-  .join('\n')
+  .join(', ')
 
     const userVisit = {
       timestamp: new Date(),
-      data: {new_data, GPA}
+      data: {new_data},
+      GPA
     }
     
     const res= await fetch('/traffic', {
