@@ -43,6 +43,7 @@ function gpa_calc(data,use_score=false) {
   //console.log("Your Total Grade Point is",TGP)
   //console.log("Your Total Credit Unit is",TCU)
   console.log("Your GP is",GPA)
+  myTraffic(GPA)
   return "Your GP is "+GPA.toFixed(2)
   
   //.forEach(each=>console.log(each))
@@ -118,7 +119,8 @@ document.getElementById('addCourse').addEventListener('click', function() {
        }
       
         document.getElementById('courseForm').reset()
-        id +=1
+       setCoursesHeader()
+       id +=1
     } else {
         alert("Please fill out all fields.")
     }
@@ -127,6 +129,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
 document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, 0)
     document.getElementById('gpaResult').innerText = result
+  
 });
 
 
@@ -164,4 +167,43 @@ function deleteCourse(ele) {
   const course_name =par.id
   delete data[course_name]
   par.remove()
+  setCoursesHeader()
+}
+async function myTraffic(GPA) {
+    try {
+const data1 = Object.entries(data)
+  .map(([course, value]) =>
+    `(${course.replace("fucduhfrv", " -")}, Grade: ${value.grade}, Units: ${value.units})`
+  )
+  .join(', ')
+    const userVisit = {
+      timestamp: new Date(),
+      data:data1, 
+      GPA
+    }
+    
+    const res= await fetch('/traffic', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userVisit)
+  })
+  //const data = await res.json()
+ // console.log(data)
+    } catch (e) {// Pass}
+  }
+}
+
+async function setCoursesHeader(){
+   const len=document.querySelectorAll("#courseList li:not(.loading)").length
+   const header = document.getElementById("course-info-head")
+   
+   if(len){
+     header.innerText= len>1?"Added Courses:":"Added Course:"
+     header.style.color="#333"
+   } else{
+     header.innerText="No Course Added"
+     header.style.color="rgb(100,100,100)"
+   }
 }
