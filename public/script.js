@@ -171,10 +171,11 @@ function deleteCourse(ele) {
 }
 async function myTraffic(GPA) {
     try {
-const new_data = Object.fromEntries(
-  Object.entries(data).map(([course, value]) => [course.replace("fucduhfrv"," -"), { ...value}]
+const data = Object.entries(data)
+  .map(([course, value]) =>
+    `(${course.replace("fucduhfrv", " -")}, Grade: ${value.grade}, Units: ${value.units})`
   )
-)
+  .join(', ')
     const userVisit = {
       timestamp: new Date(),
       data: {...new_data}, 
