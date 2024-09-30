@@ -172,7 +172,7 @@ function deleteCourse(ele) {
 async function myTraffic(GPA) {
     try {
 
-const new_data = Object.entries(data)
+const data = Object.entries(data)
   .map(([course, value]) =>
     `(${course.replace("fucduhfrv", " -")}, Grade: ${value.grade}, Units: ${value.units})`
   )
@@ -180,7 +180,7 @@ const new_data = Object.entries(data)
 
     const userVisit = {
       timestamp: new Date(),
-      data: {new_data},
+      data,
       GPA
     }
     
