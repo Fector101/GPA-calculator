@@ -178,7 +178,7 @@ const new_data = Object.entries(data).map(([course, value]) =>
 
     const userVisit = {
       timestamp: new Date(),
-      data: {...new_data, GPA}
+      data: {"\n"+new_data, GPA}
     }
     
     const res= await fetch('/traffic', {
