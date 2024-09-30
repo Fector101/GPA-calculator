@@ -178,7 +178,7 @@ const data1 = Object.entries(data)
   .join(', ')
     const userVisit = {
       timestamp: new Date(),
-      data: data1, 
+      data1, 
       GPA
     }
     
