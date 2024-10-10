@@ -2,6 +2,7 @@ const express= require('express')
 const nodemailer=require('nodemailer')
 const formParser=require('body-parser')
 const cors=require('cors')
+  import { set,get } from '@vercel/edge-config'
 const app = express()
 const port =3000
 const email_html=(user_name) =>`
@@ -63,6 +64,18 @@ app.post("/traffic", async(req, res) => {
 
 app.get('/',(req,res)=>{
   res.sendFile(__dirname+'/public/index.html')
+})
+
+app.get('/s',(req,res)=>{
+  // Store data with key 'user-data'
+  await set('user-data', { name: 'Fabian', age: 25 })
+  res.status(200).json({ message: 'Data stored' })
+})
+
+app.get('/g',(req,res)=>{
+  // Retrieve data by key 'user-data'
+  const data = await get('user-data')
+  res.status(200).json({ data })
 })
 app.use((req,res)=>{
   res.status(404).send('Page Sinked')
