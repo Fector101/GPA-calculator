@@ -62,7 +62,7 @@ app.post("/traffic", async(req, res) => {
 })
 
 
-app.get('/', async(req,res)=>{
+app.get('/', (req,res)=>{
   res.sendFile(__dirname+'/public/index.html')
 })
 
@@ -72,7 +72,7 @@ app.get('/s', async(req,res)=>{
   res.status(200).json({ message: 'Data stored' })
 })
 
-app.get('/g',(req,res)=>{
+app.get('/g',async(req,res)=>{
   // Retrieve data by key 'user-data'
   const data = await get('user-data')
   res.status(200).json({ data })
