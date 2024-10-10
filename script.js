@@ -1,4 +1,3 @@
-window.location.href = 'https://grade-calculator-101.vercel.app'
 id=0
 const course_form_ele=document.querySelector("form#courseForm")
 const grade_points={
