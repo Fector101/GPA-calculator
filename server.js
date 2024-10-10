@@ -62,11 +62,11 @@ app.post("/traffic", async(req, res) => {
 })
 
 
-app.get('/',(req,res)=>{
+app.get('/', async(req,res)=>{
   res.sendFile(__dirname+'/public/index.html')
 })
 
-app.get('/s',(req,res)=>{
+app.get('/s', async(req,res)=>{
   // Store data with key 'user-data'
   await set('user-data', { name: 'Fabian', age: 25 })
   res.status(200).json({ message: 'Data stored' })
