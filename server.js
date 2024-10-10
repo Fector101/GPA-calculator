@@ -73,9 +73,26 @@ app.get('/s', async(req,res)=>{
 })
 
 app.get('/g',async(req,res)=>{
-  // Retrieve data by key 'user-data'
-  const data = await get('user-data')
-  res.status(200).json({ data })
+  try {
+  const createReadAccessToken = await fetch(
+    'https://edge-config.vercel.com/ecfg_xdtfidgchdeevdmwwj4bc8ytbatm?token=873ff4bf-a399-40ef-9341-e234fd009369',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer 873ff4bf-a399-40ef-9341-e234fd009369`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        label: 'my edge config token label',
+      }),
+    },
+  );
+  const result = await createReadAccessToken.json();
+  res.write(result)
+    res.end()
+} catch (error) {
+  console.log(error);
+}
 })
 app.use((req,res)=>{
   res.status(404).send('Page Sinked')
