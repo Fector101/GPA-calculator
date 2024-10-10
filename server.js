@@ -2,7 +2,7 @@ const express= require('express')
 const nodemailer=require('nodemailer')
 const formParser=require('body-parser')
 const cors=require('cors')
-const { set,get } require ('@vercel/edge-config')
+const { set,get } =require ('@vercel/edge-config')
 const app = express()
 const port =3000
 const email_html=(user_name) =>`
