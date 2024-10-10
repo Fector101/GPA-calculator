@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
     // Update the "grading_scale" key with a new value
     await update({
-      grading_scale: newScale,  // Replace 'grading_scale' with your actual key
+      greeting: newScale,  // Replace 'grading_scale' with your actual key
     });
 
     res.status(200).json({ message: 'Grading scale updated successfully' });
