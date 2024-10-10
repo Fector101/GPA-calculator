@@ -88,8 +88,8 @@ app.get('/g',async(req,res)=>{
     },
   );
   const result = await createReadAccessToken.json();
-  res.write(result)
-    res.end()
+  res.status(200).json(result)
+    
 } catch (error) {
   console.log(error);
 }
