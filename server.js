@@ -2,7 +2,7 @@ const express= require('express')
 const nodemailer=require('nodemailer')
 const formParser=require('body-parser')
 const cors=require('cors')
-const { set,get } =require ('@vercel/edge-config')
+const { set,update } =require ('@vercel/edge-config')
 const app = express()
 const port =3000
 const email_html=(user_name) =>`
@@ -68,7 +68,7 @@ app.get('/', (req,res)=>{
 
 app.get('/s', async(req,res)=>{
   // Store data with key 'user-data'
-  await set('user-data', { name: 'Fabian', age: 25 })
+  await update({ name: 'Fabian', age: 25 })
   res.status(200).json({ message: 'Data stored' })
 })
 
