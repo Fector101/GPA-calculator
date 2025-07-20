@@ -225,7 +225,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const listItem = document.createElement('li')
       listItem.id = course_id
       listItem.classList.add("course-build")
-      const courseName = course_id.replace("fucduhfrv", " -")
+      const courseName = course_id.split("fucduhfrv")[0]
       listItem.innerHTML = `
         <div class="course">
           <p>${courseName}</p>
