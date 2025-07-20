@@ -174,6 +174,8 @@ function deleteCourse(ele) {
   delete data[course_name]
   par.remove()
   setCoursesHeader()
+  document.getElementById('gpaResult').innerText=gpa_calc(data, 0)
+      
 }
 async function myTraffic(GPA) {
     try {
