@@ -43,7 +43,7 @@ function gpa_calc(data,use_score=false) {
   //console.log("Your Total Grade Point is",TGP)
   //console.log("Your Total Credit Unit is",TCU)
   console.log("Your GP is",GPA)
-  myTraffic(GPA)
+  //myTraffic(GPA)
   return "Your GP is "+GPA.toFixed(2)
   
   //.forEach(each=>console.log(each))
@@ -121,6 +121,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
         document.getElementById('courseForm').reset()
        setCoursesHeader()
       id +=1
+      gpa_calc(data, 0)
       localStorage.setItem("gpaData", JSON.stringify(data))
        
     } else {
