@@ -121,7 +121,7 @@ document.getElementById('addCourse').addEventListener('click', function() {
         document.getElementById('courseForm').reset()
        setCoursesHeader()
       id +=1
-      gpa_calc(data, 0)
+      document.getElementById('gpaResult').innerText=gpa_calc(data, 0)
       localStorage.setItem("gpaData", JSON.stringify(data))
        
     } else {
