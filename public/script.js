@@ -120,7 +120,9 @@ document.getElementById('addCourse').addEventListener('click', function() {
       
         document.getElementById('courseForm').reset()
        setCoursesHeader()
-       id +=1
+      id +=1
+      localStorage.setItem("gpaData", JSON.stringify(data))
+       
     } else {
         alert("Please fill out all fields.")
     }
@@ -129,6 +131,9 @@ document.getElementById('addCourse').addEventListener('click', function() {
 document.getElementById('calculateGPA').addEventListener('click', function() {
     const result = gpa_calc(data, 0)
     document.getElementById('gpaResult').innerText = result
+  
+    // Save to localStorage
+    localStorage.setItem("gpaData", JSON.stringify(data))
   
 });
 
@@ -207,3 +212,34 @@ async function setCoursesHeader(){
      header.style.color="rgb(100,100,100)"
    }
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const savedData = localStorage.getItem("gpaData")
+  if (savedData) {
+    data = JSON.parse(savedData)
+    for (const course_id in data) {
+      const { grade, units } = data[course_id]
+
+      // Render back to HTML
+      const courseList = document.getElementById('courseList')
+      const listItem = document.createElement('li')
+      listItem.id = course_id
+      listItem.classList.add("course-build")
+      const courseName = course_id.replace("fucduhfrv", " -")
+      listItem.innerHTML = `
+        <div class="course">
+          <p>${courseName}</p>
+          <ul>
+            <p class="grade"> Grade: ${grade}</p>
+            <p class="unit"> Units: ${units}</p>
+          </ul>
+        </div>
+        <button onclick="editCourse(this)" class="edit">Edit</button>
+        <button onclick="deleteCourse(this)">Delete</button>
+      `
+      courseList.appendChild(listItem)
+    }
+
+    setCoursesHeader()
+  }
+})
