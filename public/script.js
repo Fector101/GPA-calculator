@@ -244,3 +244,4 @@ window.addEventListener('DOMContentLoaded', () => {
     setCoursesHeader()
   }
 })
+gpa_calc(data, false)
