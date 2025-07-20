@@ -244,4 +244,5 @@ window.addEventListener('DOMContentLoaded', () => {
     setCoursesHeader()
   }
 })
-gpa_calc(data, false)
+
+    document.getElementById('gpaResult').innerText = gpa_calc(data, false)
