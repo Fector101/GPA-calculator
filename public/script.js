@@ -242,7 +242,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     setCoursesHeader()
+    document.getElementById('gpaResult').innerText = gpa_calc(data, false)
+    
   }
 })
 
-    document.getElementById('gpaResult').innerText = gpa_calc(data, false)
+    
