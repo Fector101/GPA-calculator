@@ -190,7 +190,8 @@ document.getElementById('addCourse').addEventListener('click', function() {
     <p>Score: ${score}</p>
     <p class="grade">Grade: ${grade}</p>
         <p class="unit">Units: ${units}</p>
-    ${getScoreRemarkHTML(get_number(score))}
+    ${getScoreRemarkHTML(get_number(score||grade_lower_limits[grade])
+     )}
   </div>
   <div class="card-actions">
     <button class="edit" onclick="editCourse(this)">Edit</button>
