@@ -333,7 +333,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <p class='score'>Score: ${score||grade_lower_limits[grade]}</p>
     <p class="grade">Grade: ${grade}</p>
         <p class="unit">Units: ${units}</p>
-    ${getScoreRemarkHTML(get_number(score)
+    ${getScoreRemarkHTML(get_number(score||grade_lower_limits[grade])
      )}
   </div>
   <div class="card-actions">
