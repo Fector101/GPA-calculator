@@ -111,7 +111,7 @@ function insert_in_obj(course_id, dict) {
 
 
 function getScoreRemarkHTML(score) {
-  if (isNaN(score)) return score+""; // No score → no output
+  if (isNaN(score)) return ""; // No score → no output
   
   const A_cutoff = 70;
   const diff = A_cutoff - score;
@@ -127,7 +127,7 @@ function getScoreRemarkHTML(score) {
     type = "warn1"
   } else {
     type = "bad"; // deep red
-    text=''
+    text= (60-score)+' needed to get a B'
   }
   
   return `
