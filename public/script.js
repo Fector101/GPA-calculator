@@ -111,7 +111,7 @@ function insert_in_obj(course_id, dict) {
 
 
 function getScoreRemarkHTML(score) {
-  if (isNaN(score)) return ""; // No score → no output
+  if (isNaN(score)) return score+""; // No score → no output
   
   const A_cutoff = 70;
   const diff = A_cutoff - score;
